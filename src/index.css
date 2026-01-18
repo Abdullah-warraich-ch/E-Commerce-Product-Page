@@ -3,9 +3,9 @@
 @import "tailwindcss";
 
 @theme {
-  --font-intel: "intel", san-sarif;
+  --font-intel: "Inter", sans-serif;
   --color-primary: #f0eeed;
 }
 body {
-  font-family: "intel", san-sarif;
+  font-family: "Inter", sans-serif;
 }
