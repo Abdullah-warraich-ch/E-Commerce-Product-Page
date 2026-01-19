@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "./MainLayout";
 import Details from "./pages/Details";
+import Cart from "./pages/Cart";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/details/:id" element={<Details />} />
+          <Route path="/cart" element={<Cart />} />
         </Route>
       </Routes>
     </BrowserRouter>

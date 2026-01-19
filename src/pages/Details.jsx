@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Button from "../components/Button";
 import ProductContext from "../Context/ProductContext";
 import ProductDetails from "../Sections/ProductDetails";
 import Reviews from "../Sections/Reviews";
+import CartContext from "../Context/CartContext";
 
 function Details() {
   const { id } = useParams();
+
+  const { cartItems, setCartItems } = useContext(CartContext);
   const [quantity, setQuantity] = useState(0);
   const { product } = useContext(ProductContext);
   const [singleProduct, setSingleProduct] = useState();
@@ -19,11 +21,26 @@ function Details() {
   function dicremenQuantity() {
     setQuantity((prev) => prev - 1);
   }
+
+  function addToCart() {
+    setCartItems((prev) => [
+      ...prev,
+      {
+        id: singleProduct.id,
+        thumbnail: singleProduct.thumbnail,
+        title: singleProduct.title,
+        price: singleProduct.price,
+        brand: singleProduct.brand,
+        returnPolicy: singleProduct.returnPolicy,
+        quantity: quantity,
+      },
+    ]);
+  }
+
   useEffect(() => {
     if (!product) return;
     const found = product.find((item) => String(item.id) === String(id));
     setSingleProduct(found);
-    // SetMainimage(found.images);
     if (singleProduct) SetMainimage(singleProduct.images[0]);
   }, [product, singleProduct]);
 
@@ -129,7 +146,12 @@ function Details() {
               </button>
             </div>
             <div className="w-full">
-              <Button text="Add to Cart" />
+              <button
+                onClick={addToCart}
+                className="bg-black text-white rounded-full pt-2 pb-2 pl-8 pr-8 w-full"
+              >
+                Add to Cart
+              </button>
             </div>
           </div>
         </div>

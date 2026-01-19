@@ -28,8 +28,10 @@ function Header() {
         />
       </div>
       <div className="flex text-xl gap-5">
-        <CiShoppingCart />
-        <GiSelfLove />
+        <Link to="/cart">
+          <CiShoppingCart />
+        </Link>
+        <GiSelfLove onClick={localStorage.clear} />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 
-function Button({ text, action }) {
+function Button({ text, action,sssss }) {
   return (
     <button
       onSubmit={action}
