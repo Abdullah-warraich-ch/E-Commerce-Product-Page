@@ -10,12 +10,12 @@ import Beauty from "../components/Beauty";
 function Home() {
   return (
 
-    
+
     <div>
       <div className="bg-primary">
         <Intro />
       </div>
-      <div className="max-w-[80%] m-auto">
+      <div className="w-[95%] md:max-w-[80%] m-auto">
         <Heading text="TOP SELLING" />
         <Popularitems />
         <Heading text="Beauty" />

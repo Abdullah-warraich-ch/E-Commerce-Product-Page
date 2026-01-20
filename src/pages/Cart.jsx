@@ -20,24 +20,24 @@ function Cart() {
       </div>
     );
   return (
-    <div className="max-w-4/5 m-auto mt-10 min-h-screen">
-      <div className="flex justify-between">
+    <div className="max-w-[95%] md:max-w-4/5 m-auto mt-10 min-h-screen">
+      <div className="flex justify-between items-center">
         <h1 className="font-bold text-2xl">YOUR CART</h1>
         <button
-          className="p-2 pl-4 pr-4 bg-gray-200  rounded-full"
+          className="p-2 pl-4 pr-4 bg-gray-200  rounded-full text-sm hover:bg-gray-300"
           onClick={clearCart}
         >
           Clear Cart
         </button>
       </div>
-      <div className="flex mt-10">
-        <div className="w-[60%] border border-gray-200 pl-5 pr-5 rounded">
+      <div className="flex flex-col md:flex-row mt-10 gap-5 md:gap-0">
+        <div className="w-full md:w-[60%] border border-gray-200 pl-2 pr-2 md:pl-5 md:pr-5 rounded py-4">
           {cartItems.map((item) => (
-            <Cartard item={item} />
+            <Cartard item={item} key={item.id} />
           ))}
         </div>
         {/* order Summary */}
-        <div className="w-[40%] pl-10 pr-10 pt-5 pb-5 border gap-5 border-gray-200 ml-5 rounded  flex flex-col h-91">
+        <div className="w-full md:w-[40%] pl-5 pr-5 md:pl-10 md:pr-10 pt-5 pb-5 border gap-5 border-gray-200 md:ml-5 rounded flex flex-col h-fit md:h-91">
           <div>
             <h1 className="font-bold text-xl">Order Summary</h1>
           </div>
@@ -60,12 +60,12 @@ function Cart() {
               Rs.
               {Math.floor(
                 cartItems.reduce((total, item) => total + item.price, 0) * 283 +
-                  160,
+                160,
               )}
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <div className="relative flex items-center ">
+            <div className="relative flex items-center w-full">
               <CiShoppingTag
                 className="absolute left-2 "
                 size={24}
@@ -74,7 +74,7 @@ function Cart() {
               <input
                 type="text"
                 placeholder="Enter coupon code"
-                className="bg-gray-200 p-3  rounded-full pl-10 w-full text-xs outline-gray-500"
+                className="bg-gray-200 p-3 rounded-full pl-10 w-full text-xs outline-gray-500"
               />
             </div>
             <div>
@@ -82,7 +82,7 @@ function Cart() {
             </div>
           </div>
           <div className="w-full">
-            <button className="p-2 pl-4 pr-4 w-full cursor-pointer  bg-black text-white rounded-full">
+            <button className="p-2 pl-4 pr-4 w-full cursor-pointer  bg-black text-white rounded-full hover:bg-gray-800">
               Checkout
             </button>
           </div>

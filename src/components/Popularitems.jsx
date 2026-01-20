@@ -12,9 +12,9 @@ function Popularitems() {
         Math.trunc(
           (item.reviews.reduce((total, review) => total + review.rating, 0) /
             3) *
-            10,
+          10,
         ) /
-          10 >
+        10 >
         4.5,
     );
     setPopularitems(popular);
@@ -24,7 +24,7 @@ function Popularitems() {
   if (loading) return <p>Loading...........</p>;
 
   return (
-    <div className="grid grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {popularitems.slice(0, visibleCount).map((item) => (
         <Card
           key={item.id}
@@ -38,7 +38,7 @@ function Popularitems() {
                 0,
               ) /
                 3) *
-                10,
+              10,
             ) / 10
           }
           price={Math.round(item.price * 283)}

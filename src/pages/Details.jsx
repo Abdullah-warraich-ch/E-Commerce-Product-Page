@@ -52,52 +52,53 @@ function Details() {
   console.log(isInCart);
   return (
     <div>
-      <div className="flex max-w-4/5 m-auto gap-10 mt-10">
-        <div className=" flex">
-          <div className="flex flex-col gap-4 justify-start overflow-clip">
+      <div className="flex flex-col md:flex-row max-w-[95%] md:max-w-4/5 m-auto gap-10 mt-10">
+        <div className="flex flex-col-reverse md:flex-row w-full md:w-1/2 gap-4">
+          <div className="flex md:flex-col gap-4 justify-start overflow-x-auto md:overflow-clip">
             {singleProduct.images.map((image, index) => (
               <img
+                key={index}
                 src={image}
                 alt=""
                 className={
                   image == mainImage
-                    ? "w-40 border bg-primary rounded "
-                    : "w-40 bg-primary rounded "
+                    ? "w-20 md:w-40 border bg-primary rounded cursor-pointer shrink-0"
+                    : "w-20 md:w-40 bg-primary rounded cursor-pointer shrink-0"
                 }
                 onClick={() => SetMainimage(image)}
               />
             ))}
           </div>
-          <div className=" flex justify-center">
+          <div className="flex justify-center w-full">
             <img
               src={mainImage}
               alt=""
               srcset=""
-              className="max-w-[90%] bg-primary rounded "
+              className="w-full max-h-[500px] object-contain bg-primary rounded "
             />
           </div>
         </div>
-        <div className="flex flex-col justify-between gap-2">
-          <div className="flex">
-            <h1 className="font-bold text-5xl">{singleProduct.title}</h1>
-            <div className="w-1/2 flex justify-end">
-              <img src={singleProduct.meta.qrCode} alt="" className="w-25" />
+        <div className="flex flex-col justify-between gap-4 w-full md:w-1/2">
+          <div className="flex justify-between items-start">
+            <h1 className="font-bold text-3xl md:text-5xl">{singleProduct.title}</h1>
+            <div className="w-1/4 flex justify-end">
+              <img src={singleProduct.meta.qrCode} alt="" className="w-20 md:w-25" />
             </div>
           </div>
           <p className="text-gray-500 text-sm">
             <span className="text-black">⭐ </span>
             {singleProduct.rating}
           </p>
-          <div className="flex gap-2">
-            <h1 className="font-bold">
+          <div className="flex gap-2 items-center">
+            <h1 className="font-bold text-2xl">
               Rs. {Math.floor(Number(singleProduct.price * 286))}
             </h1>
-            <h1 className="font-bold text-gray-400 line-through">
+            <h1 className="font-bold text-gray-400 line-through text-lg">
               Rs.
               {Math.floor(
                 Math.floor(Number(singleProduct.price * 286)) /
-                  (1 -
-                    Math.floor(Number(singleProduct.discountPercentage)) / 100),
+                (1 -
+                  Math.floor(Number(singleProduct.discountPercentage)) / 100),
               )}
             </h1>
             <h1 className="bg-red-200 text-xs text-red-600 flex rounded-full p-1 pr-2 pl-2  items-center">
@@ -105,22 +106,22 @@ function Details() {
             </h1>
           </div>
 
-          <p className="text-xs w-4/5 text-justify text-gray-700">
+          <p className="text-sm md:text-base text-gray-700">
             {singleProduct.description}
           </p>
           <div>
             <p
               className={
                 singleProduct.availabilityStatus === "In Stock"
-                  ? "bg-green-200 w-[25%] text-xs text-center p-2 text-green-600 pl-4 pr-4 text-green rounded-full"
-                  : "bg-red-200 w-[25%] text-xs text-center p-2 text-red-600 pl-4 pr-4 text-red rounded-full"
+                  ? "bg-green-200 w-fit text-xs text-center p-2 text-green-600 pl-4 pr-4 rounded-full"
+                  : "bg-red-200 w-fit text-xs text-center p-2 text-red-600 pl-4 pr-4 rounded-full"
               }
             >
               {singleProduct.availabilityStatus}
             </p>
           </div>
           <p className="text-xs text-gray-600">Tags</p>
-          <div className="flex gap-2">
+          <div className="flex gap-2 flex-wrap">
             {singleProduct.tags.map((tag) => (
               <span className="bg-gray-200 text-gray-600 p-2 rounded-full pl-4 pr-4 text-xs">
                 {tag}
@@ -132,12 +133,12 @@ function Details() {
             <span>{singleProduct.returnPolicy}</span>
           </div>
 
-          <div className="flex gap-2">
-            <div className="bg-gray-200 w-1/3 text-xl flex justify-around p-1 rounded-full items-center">
+          <div className="flex flex-col md:flex-row gap-4 mt-4">
+            <div className="bg-gray-200 w-full md:w-1/3 text-xl flex justify-around p-3 md:p-1 rounded-full items-center">
               <button
                 onClick={dicremenQuantity}
                 disabled={quantity === 1}
-                className="text-2xl"
+                className="text-2xl disable:opacity-50"
               >
                 -
               </button>
@@ -145,7 +146,7 @@ function Details() {
               <button
                 onClick={incrementQuantity}
                 disabled={quantity == singleProduct.stock}
-                className="text-2xl"
+                className="text-2xl disable:opacity-50"
               >
                 +
               </button>
@@ -156,8 +157,8 @@ function Details() {
                 onClick={addToCart}
                 className={
                   isInCart
-                    ? "bg-gray-700 cursor-not-allowed text-white rounded-full pt-2 pb-2 pl-8 pr-8 w-full"
-                    : "bg-black text-white cursor-pointer rounded-full pt-2 pb-2 pl-8 pr-8 w-full"
+                    ? "bg-gray-700 cursor-not-allowed text-white rounded-full py-3 md:py-2 px-8 w-full"
+                    : "bg-black text-white cursor-pointer rounded-full py-3 md:py-2 px-8 w-full hover:bg-gray-800"
                 }
               >
                 {isInCart ? "Added to Cart" : "Add to Cart"}
