@@ -9,7 +9,7 @@ function Details() {
   const { id } = useParams();
 
   const { cartItems, setCartItems } = useContext(CartContext);
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const { product } = useContext(ProductContext);
   const [singleProduct, setSingleProduct] = useState();
   const [mainImage, SetMainimage] = useState();
@@ -45,6 +45,11 @@ function Details() {
   }, [product, singleProduct]);
 
   if (!singleProduct) return <p>Loading..........</p>;
+
+  const isInCart = cartItems.some(
+    (item) => Number(item.id) === Number(singleProduct.id),
+  );
+  console.log(isInCart);
   return (
     <div>
       <div className="flex max-w-4/5 m-auto gap-10 mt-10">
@@ -131,7 +136,7 @@ function Details() {
             <div className="bg-gray-200 w-1/3 text-xl flex justify-around p-1 rounded-full items-center">
               <button
                 onClick={dicremenQuantity}
-                disabled={quantity === 0}
+                disabled={quantity === 1}
                 className="text-2xl"
               >
                 -
@@ -147,10 +152,15 @@ function Details() {
             </div>
             <div className="w-full">
               <button
+                disabled={isInCart}
                 onClick={addToCart}
-                className="bg-black text-white rounded-full pt-2 pb-2 pl-8 pr-8 w-full"
+                className={
+                  isInCart
+                    ? "bg-gray-700 cursor-not-allowed text-white rounded-full pt-2 pb-2 pl-8 pr-8 w-full"
+                    : "bg-black text-white cursor-pointer rounded-full pt-2 pb-2 pl-8 pr-8 w-full"
+                }
               >
-                Add to Cart
+                {isInCart ? "Added to Cart" : "Add to Cart"}
               </button>
             </div>
           </div>

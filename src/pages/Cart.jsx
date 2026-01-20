@@ -11,6 +11,12 @@ function Cart() {
   function clearCart() {
     setCartItems([]);
   }
+  if (cartItems.length == 0)
+    return (
+      <div className="max-w-[80%] m-auto h-screen font-bold text-xl flex justify-center items-center">
+        Cart is Empty
+      </div>
+    );
   return (
     <div className="max-w-4/5 m-auto mt-10">
       <div className="flex justify-between">
