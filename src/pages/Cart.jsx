@@ -15,12 +15,12 @@ function Cart() {
   }
   if (cartItems.length == 0)
     return (
-      <div className="max-w-[80%] m-auto h-screen font-bold text-xl flex justify-center items-center">
+      <div className="max-w-[80%] m-auto min-h-screen font-bold text-xl flex justify-center items-center">
         Cart is Empty
       </div>
     );
   return (
-    <div className="max-w-4/5 m-auto mt-10">
+    <div className="max-w-4/5 m-auto mt-10 min-h-screen">
       <div className="flex justify-between">
         <h1 className="font-bold text-2xl">YOUR CART</h1>
         <button

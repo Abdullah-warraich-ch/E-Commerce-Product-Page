@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Card from "./Card";
 import ProductContext from "../Context/ProductContext";
 function Footwear() {
+  const [visibleCount, setVisibleCount] = useState(4);
   const { product, loading, setLoading } = useContext(ProductContext);
   const [shoesitems, setShoesitems] = useState([]);
 
@@ -14,7 +15,7 @@ function Footwear() {
   if (loading) return <p>Loading...........</p>;
   return (
     <div className="grid grid-cols-4 gap-4">
-      {shoesitems.map((item) => (
+      {shoesitems.slice(0, visibleCount).map((item) => (
         <Card
           id={item.id}
           key={item.id}
@@ -33,6 +34,16 @@ function Footwear() {
           price={Math.round(item.price * 283)}
         />
       ))}
+      {visibleCount < shoesitems.length && (
+        <div className="col-span-4 flex justify-center">
+          <button
+            onClick={() => setVisibleCount((v) => v + 4)}
+            className="px-4 py-2 text-white bg-black cursor-pointer hover:text-black hover:bg-white border rounded"
+          >
+            See More
+          </button>
+        </div>
+      )}
     </div>
   );
 }

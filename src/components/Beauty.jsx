@@ -4,6 +4,7 @@ import ProductContext from "../Context/ProductContext";
 function Beauty() {
   const { product, loading, setLoading } = useContext(ProductContext);
   const [beauty, setBeauty] = useState([]);
+  const [visibleCount, setVisibleCount] = useState(4);
 
   useEffect(() => {
     const bea = product.filter((item) => item.tags.includes("beauty"));
@@ -14,7 +15,7 @@ function Beauty() {
   if (loading) return <p>Loading...........</p>;
   return (
     <div className="grid grid-cols-4 gap-4">
-      {beauty.map((item) => (
+      {beauty.slice(0, visibleCount).map((item) => (
         <Card
           id={item.id}
           key={item.id}
@@ -33,6 +34,16 @@ function Beauty() {
           price={Math.round(item.price * 283)}
         />
       ))}
+      {visibleCount < beauty.length && (
+        <div className="col-span-4 flex justify-center">
+          <button
+            onClick={() => setVisibleCount((v) => v + 4)}
+            className="px-4 py-2 text-white bg-black cursor-pointer hover:text-black hover:bg-white border rounded"
+          >
+            See More
+          </button>
+        </div>
+      )}
     </div>
   );
 }
