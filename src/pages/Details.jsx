@@ -29,7 +29,7 @@ function Details() {
         id: singleProduct.id,
         thumbnail: singleProduct.thumbnail,
         title: singleProduct.title,
-        price: singleProduct.price,
+        price: singleProduct.price * quantity,
         brand: singleProduct.brand,
         returnPolicy: singleProduct.returnPolicy,
         quantity: quantity,

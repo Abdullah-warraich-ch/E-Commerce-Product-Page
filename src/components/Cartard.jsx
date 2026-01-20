@@ -31,9 +31,7 @@ function Cartard({ item }) {
             <p className="text-xs text-gray-500">{item.brand}</p>
             <p className="text-xs text-gray-500">{item.returnPolicy}</p>
           </div>
-          <p className="font-bold">
-            Rs. {Math.floor(item.price * 283) * item.quantity}
-          </p>
+          <p className="font-bold">Rs. {Math.floor(item.price * 283)}</p>
         </div>
       </div>
 
