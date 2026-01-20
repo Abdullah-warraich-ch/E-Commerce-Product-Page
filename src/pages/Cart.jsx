@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import CartContext from "../Context/CartContext";
 import Cartard from "../components/Cartard";
+import { CiShoppingTag } from "react-icons/ci";
+import Button from "../components/Button";
 
 function Cart() {
   const { cartItems, setCartItems } = useContext(CartContext);
@@ -28,7 +30,7 @@ function Cart() {
           Clear Cart
         </button>
       </div>
-      <div className="flex">
+      <div className="flex mt-10">
         <div className="w-[60%] border border-gray-200 pl-5 pr-5 rounded">
           {cartItems.map((item) => (
             <Cartard item={item} />
@@ -62,8 +64,25 @@ function Cart() {
               )}
             </p>
           </div>
-          <div>
-            <button className="p-2 pl-4 pr-4 bg-gray-200  rounded-full">
+          <div className="flex items-center gap-2">
+            <div className="relative flex items-center ">
+              <CiShoppingTag
+                className="absolute left-2 "
+                size={24}
+                color="gray"
+              />
+              <input
+                type="text"
+                placeholder="Enter coupon code"
+                className="bg-gray-200 p-3  rounded-full pl-10 w-full text-xs outline-gray-500"
+              />
+            </div>
+            <div>
+              <Button text="Apply" />
+            </div>
+          </div>
+          <div className="w-full">
+            <button className="p-2 pl-4 pr-4 w-full cursor-pointer  bg-black text-white rounded-full">
               Checkout
             </button>
           </div>
