@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import ProductContext from "./ProductContext";
 
 function ProductContextProvider({ children }) {
-  const api_url = "/public/api/products.json";
+  const api_url = "/api/products.json";
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
 
