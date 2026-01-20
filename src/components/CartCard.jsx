@@ -3,7 +3,7 @@ import { MdDeleteOutline } from "react-icons/md";
 import ProductContext from "../Context/ProductContext";
 import CartContext from "../Context/CartContext";
 
-function Cartard({ item }) {
+function CartCard({ item }) {
   const { cartItems, setCartItems } = useContext(CartContext);
 
   function dltItem() {
@@ -48,4 +48,4 @@ function Cartard({ item }) {
   );
 }
 
-export default Cartard;
+export default CartCard;

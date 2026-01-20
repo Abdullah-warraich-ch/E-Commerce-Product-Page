@@ -37,7 +37,7 @@ function Electronics() {
         />
       ))}
       {visibleCount < electricitems.length && (
-        <div className="col-span-4 flex justify-center">
+        <div className="col-span-full flex justify-center">
           <button
             onClick={() => setVisibleCount((v) => v + 4)}
             className="px-4 py-2 text-white bg-black cursor-pointer hover:text-black hover:bg-white border rounded"

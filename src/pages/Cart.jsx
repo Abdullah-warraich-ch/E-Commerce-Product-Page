@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import CartContext from "../Context/CartContext";
-import Cartard from "../components/Cartard";
+import CartCard from "../components/CartCard";
 import { CiShoppingTag } from "react-icons/ci";
 import Button from "../components/Button";
 
@@ -33,7 +33,7 @@ function Cart() {
       <div className="flex flex-col md:flex-row mt-10 gap-5 md:gap-0">
         <div className="w-full md:w-[60%] border border-gray-200 pl-2 pr-2 md:pl-5 md:pr-5 rounded py-4">
           {cartItems.map((item) => (
-            <Cartard item={item} key={item.id} />
+            <CartCard item={item} key={item.id} />
           ))}
         </div>
         {/* order Summary */}
